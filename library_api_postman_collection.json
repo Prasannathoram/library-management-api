@@ -1,0 +1,234 @@
+{
+	"info": {
+		"_postman_id": "fbba7a57-6cf6-4a7d-ba56-216be82a2ef4",
+		"name": "Library API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50716462",
+		"_collection_link": "https://prasannathoram-636365.postman.co/workspace/Prasanna-Thoram's-Workspace~192a7228-2643-449e-8052-084d3556b65c/collection/50716462-fbba7a57-6cf6-4a7d-ba56-216be82a2ef4?action=share&source=collection_link&creator=50716462"
+	},
+	"item": [
+		{
+			"name": "Add Book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Book One\",\n  \"author\": \"Author Name\",\n  \"category\": \"Fiction\",\n  \"total_copies\": 3\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Available Books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/books/available",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						"available"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Member",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Prasanna\",\n  \"email\": \"prasanna@mail.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/members",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Member Borrowed Books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/members/1/borrowed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"members",
+						"1",
+						"borrowed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrow Book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"member_id\": 1,\n  \"book_id\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/transactions/borrow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"borrow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Return Book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"transaction_id\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/transactions/return",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"return"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Overdue Transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/transactions/overdue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"overdue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pay Fine",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"fine_id\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/fines/pay",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fines",
+						"pay"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
