@@ -1,10 +1,25 @@
+
 const pool = require("../config/db");
 
-exports.createFine = async (transaction_id, amount) => {
-    const [result] = await pool.query(
-        "INSERT INTO fines (transaction_id, amount) VALUES (?, ?)",
-        [transaction_id, amount]
-    );
+async function getAllFines() {
+  const [rows] = await pool.query(
+    `SELECT f.*, m.name AS member_name, b.title AS book_title
+     FROM fines f
+     JOIN transactions t ON f.transaction_id = t.id
+     JOIN members m ON t.member_id = m.id
+     JOIN books b ON t.book_id = b.id`
+  );
+  return rows;
+}
 
-    return result.insertId;
+async function payFine(fineId) {
+  await pool.query(
+    "UPDATE fines SET paid_at = NOW() WHERE id = ? AND paid_at IS NULL",
+    [fineId]
+  );
+}
+
+module.exports = {
+  getAllFines,
+  payFine,
 };

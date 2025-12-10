@@ -1,9 +1,21 @@
+
 const fineService = require("../services/fineService");
 
-exports.createFine = async (req, res) => {
-    const { transaction_id, amount } = req.body;
+exports.getAllFines = async (req, res) => {
+  try {
+    const fines = await fineService.getAllFines();
+    res.json(fines);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
-    const id = await fineService.createFine(transaction_id, amount);
-
-    res.json({ message: "Fine created", id });
+exports.payFine = async (req, res) => {
+  try {
+    const fineId = req.params.id;
+    await fineService.payFine(fineId);
+    res.json({ message: "Fine marked as paid" });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
 };

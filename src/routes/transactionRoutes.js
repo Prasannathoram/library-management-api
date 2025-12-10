@@ -1,7 +1,10 @@
+
 const express = require("express");
 const router = express.Router();
-const transactionController = require("../controllers/transactionController");
+const controller = require("../controllers/transactionController");
 
-router.post("/borrow", transactionController.borrowBook);
+router.post("/borrow", controller.borrowBook);
+router.post("/:id/return", controller.returnBook);
+router.get("/overdue", controller.getOverdue);
 
 module.exports = router;
